@@ -14,7 +14,8 @@ class Post(models.Model):
     published = PublishedManager()
 
     def get_absolute_url(self):
-        return reverse('blog:post_details',args=[self.publish.year,self.publish.month,self.publish.date,self.slug])
+       
+        return reverse('blog:post_details',kwargs={'year':self.publish.year,'month':self.publish.month,'day':self.publish.day,'post':self.slug})
     STATUS_CHOICES = (
         ('draft','Draft'),
         ('published','Published')
